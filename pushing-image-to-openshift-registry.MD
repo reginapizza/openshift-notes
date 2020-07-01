@@ -16,7 +16,7 @@ Note: you will need to have an account on quay.io and oc client tool installed t
 
 7. Commit it by running `docker commit 7cce9db1c5b4 quay.io/rescott/buildpack-test`. The output should be a long sha256 id. 
 
-8. Push to your quay repository by running `docker push quay.io/rescott/buildpack-test`
+8. Push to your quay repository by running `docker push quay.io/rescott/buildpack-test`. Now if you navigate to your repository in quay you should see your new image under "Tags" and "Tag History"
 
 9. To push to openshift registry, run `oc tag quay.io/rescott/buildpack-test:latest buildpack-test:latest`. Your output should say "Tag buildpack-test:latest set to quay.io/rescott/buildpack-test:latest."
 
