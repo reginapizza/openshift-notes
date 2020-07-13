@@ -76,7 +76,7 @@ kubectl create secret docker-registry regcred --docker-server=<your-registry-ser
 For example (with fake inputs), mine would be: ```kubectl create secret docker-registry regcred --docker-server=https://index.docker.io/v1/ --docker-username=myusername --docker-password=fakepassword!123 --docker-email=myemail@redhat.com```
 This secret will be used in pod.yaml config.
 
-8.) Run `oc apply -f pod.yaml` (can also run `kubectly apply -f pod.yaml`)  will start up your init container, output will be `pod/buildah created`
+8.) Run `oc apply -f pod.yaml` (can also run `kubectl apply -f pod.yaml`)  will start up your init container, output will be `pod/buildah created`
 
 9.) Run `oc get po` to see running pods, you will see your init container listed there.
 
