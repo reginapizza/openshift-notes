@@ -82,7 +82,7 @@ This secret will be used in pod.yaml config.
 
 10.) To see logs for your pod, run `oc logs buildah`. Right now you only have an init pod so it will say `Error from server (BadRequest): container "buildahcontainer" in pod "buildah" is waiting to start: PodInitializing`
 
-11.) Run `oc cp $HOME/example1/buildah-build-context.tar.gz buildah:/tmp/buildah-build-context.tar.gz -c buildah-init` (no output expected)
+11.) Run `oc cp $HOME/demo/buildah-build-context.tar.gz buildah:/tmp/buildah-build-context.tar.gz -c buildah-init` (no output expected)
 
 12.) Run `oc exec buildah -c buildah-init -- tar -zxf /tmp/buildah-build-context.tar.gz -C /buildah/build-context` (no output expected)
 
