@@ -39,18 +39,11 @@ spec:
         cpu: "500m"
     securityContext:
         privileged: true
+    command: 
+      ["/bin/sh"]
     args:
-        - buildah
-        - bud
-        - --isolation 
-        - chroot
-        - -t
-        - mybuildahdemo
-        - buildah/build-context
-        - buildah
-        - push
-        - mybuildahdemo
-        - docker://docker.io/rescott/buildah-demo:latest
+      ["-c", "buildah bud --isolation chroot -t mybuilddemo buildah/build-context && buildah push mybuilddemo docker://docker.io/rescott/buildah-demo:latest"]
+    volumeMounts:
     volumeMounts:
         - name: build-context
           mountPath: /buildah/build-context
