@@ -1,4 +1,5 @@
 # How to Run Containers as Unprivileged (Rootless) User with Buildah
+### Running on Fedora 32 OS
 
 ### Documentation:
 
@@ -33,3 +34,9 @@
 
 ---
 
+### Prep/Installation:
+1. Install [Podman](https://podman.io/getting-started/installation.html)
+
+  Fedora(CoreOS) comes with Podman installed already. 
+  
+ 2. Install [Buildah]
