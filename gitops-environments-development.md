@@ -19,15 +19,7 @@ $ ./bin/bridge
 
 Now with your locally running dev console:
 
-1.) Intstall Openshift Pipelines Operator
-
 2.) Install Sealed Secrets Operator (in `cicd` namespace) and then create `sealedsecretscontroller`
-
-3.) Install ArgoCD Operator (in `argocd` namespace)
-
-4.) Run `oc adm policy add-cluster-role-to-user cluster-admin system:serviceaccount:argocd:argocd-application-controller`
-
-5.) Run `oc replace -f https://raw.githubusercontent.com/redhat-developer/kam/master/docs/updates/buildah.yaml`
 
 6.) Install Gitops Operator
 
@@ -49,21 +41,9 @@ cd output
 oc apply -k config/argocd/
 ```
 
-9.) Commit local changes to gitops repo created by kam and push to main github branch. 
-```
-$ git init
-$ git add .
-$ git commit -m "Initial commit"
-$ git remote add origin https://github.com/reginapizza/gitops.git
-$ git push -u origin master
-```
+10.) 10.) Switch to Developer view and go to `openshift-gitops` namespace, click on Secrets tab, and then find `argocd-cluser-cluster`. Click on it and then copy the password at the bottom of the page. Go to Console Application Launcher and click on the ArgoCD link, then log in with username `admin` and password from clipboard.
 
-10.) Go to `argocd` namespace and go to `argocd-server` deployment pod to get link to ArgoCD web console, then sign in with `admin` as username and token from running
-```
-kubectl get secret argocd-cluster -n argocd -ojsonpath='{.data.admin\.password}' | base64 --decode
-```
-
-11.) Run 
+11.) Run (sometimes I run this if it isn't synced properly- not sure if I need to?)
 ```
 oc apply -k config/cicd/base
 ```
@@ -71,17 +51,17 @@ oc apply -k config/cicd/base
 12.) Create the webhook with
 ```
  kam webhook create \
-    --access-token {github token} \
+    --git-host-access-token {github token} \
     --env-name dev \
     --service-name taxi
 ```
 
-13.) Run
+13.) Run (?)
 ```
 kubectl create namespace pipelines-kubeadmin-github
 ```
 
-14.) Run
+14.) Run (?)
 ```
 kubectl create secret -n pipelines-kubeadmin-github generic kubeadmin-github-token --from-literal=token={github token}
 ```
@@ -185,5 +165,5 @@ resources:
 ```
 $ git add .
 $ git commit -m "Add new service"
-$ git push origin master
+$ git push origin main
 ```
